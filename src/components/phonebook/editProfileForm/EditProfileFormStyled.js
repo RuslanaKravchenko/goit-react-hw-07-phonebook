@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import randomRGB from '../../../utils/randomRGB';
 
 const EditProfileStyled = styled.div`
   padding: 30px 15px;
@@ -140,6 +141,76 @@ const EditProfileStyled = styled.div`
       box-shadow: 6px 8px 18px 3px rgba(98, 46, 150, 0.23);
 
       outline: none;
+    }
+  }
+
+  .avatar_fild {
+    position: relative;
+    margin: 0 auto;
+    width: 80px;
+  }
+
+  .avatar_label {
+    display: block;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .avatar_input {
+    display: none;
+  }
+
+  .avatar_span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    font-size: 26px;
+    font-weight: 700;
+    background-color: ${randomRGB};
+    border-radius: 50%;
+  }
+
+  .avatar_container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .avatar_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar_icon {
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .avatar_btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      outline: none;
+
+      & .avatar_icon {
+        fill: #7c41c5;
+      }
     }
   }
 `;

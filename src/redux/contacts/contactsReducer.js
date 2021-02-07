@@ -40,21 +40,7 @@ const errorReducer = createReducer(null, {
 });
 
 const loadingReducer = createReducer(false, {
-  [contactsActions.addNewContactRequest]: () => true,
-  [contactsActions.addNewContactSuccess]: () => false,
-  [contactsActions.addNewContactError]: () => false,
-
-  [contactsActions.getContactsRequest]: () => true,
-  [contactsActions.getContactsSuccess]: () => false,
-  [contactsActions.getContactsError]: () => false,
-
-  [contactsActions.deleteContactRequest]: () => true,
-  [contactsActions.deleteContactSuccess]: () => false,
-  [contactsActions.deleteContactError]: () => false,
-
-  [contactsActions.editContactRequest]: () => true,
-  [contactsActions.editContactSuccess]: () => false,
-  [contactsActions.editContactError]: () => false,
+  [contactsActions.setLoading]: state => !state,
 });
 
 export default combineReducers({

@@ -4,7 +4,7 @@ import contactsActions from './contactsActions';
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 const addNewContact = contact => async dispatch => {
-  dispatch(contactsActions.addNewContactRequest());
+  dispatch(contactsActions.setLoading());
 
   try {
     const { data } = await axios.post('/contacts.json', contact);
@@ -13,11 +13,13 @@ const addNewContact = contact => async dispatch => {
     );
   } catch (error) {
     dispatch(contactsActions.addNewContactError(error));
+  } finally {
+    dispatch(contactsActions.setLoading());
   }
 };
 
 const getContacts = () => async dispatch => {
-  dispatch(contactsActions.getContactsRequest());
+  dispatch(contactsActions.setLoading());
 
   try {
     const { data } = await axios.get('/contacts.json');
@@ -30,22 +32,26 @@ const getContacts = () => async dispatch => {
     }
   } catch (error) {
     dispatch(contactsActions.getContactsError(error));
+  } finally {
+    dispatch(contactsActions.setLoading());
   }
 };
 
 const deleteContact = id => async dispatch => {
-  dispatch(contactsActions.deleteContactRequest());
+  dispatch(contactsActions.setLoading());
 
   try {
     await axios.delete(`/contacts/${id}.json`);
     dispatch(contactsActions.deleteContactSuccess(id));
   } catch (error) {
     dispatch(contactsActions.deleteContactError(error));
+  } finally {
+    dispatch(contactsActions.setLoading());
   }
 };
 
 const editContact = newContact => async dispatch => {
-  dispatch(contactsActions.editContactRequest());
+  dispatch(contactsActions.setLoading());
 
   try {
     const { data } = await axios.put(
@@ -56,6 +62,8 @@ const editContact = newContact => async dispatch => {
     dispatch(contactsActions.editContactSuccess(data));
   } catch (error) {
     dispatch(contactsActions.editContactError(error));
+  } finally {
+    dispatch(contactsActions.setLoading());
   }
 };
 

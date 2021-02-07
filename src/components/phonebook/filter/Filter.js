@@ -18,6 +18,7 @@ const Filter = ({ filter, setFilter }) => {
       <input
         className="filter_input"
         placeholder="Find by name..."
+        autoComplete="off"
         type="text"
         name="filter"
         value={filter}

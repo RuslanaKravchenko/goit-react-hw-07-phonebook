@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import randomRGB from '../../../utils/randomRGB';
 
 const ContactInfoStyled = styled.div`
   padding: 40px 30px;
@@ -104,6 +105,36 @@ const ContactInfoStyled = styled.div`
     pointer-events: none;
     cursor: default;
     background-color: grey;
+  }
+
+  .info_header-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .avatar_span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    font-size: 26px;
+    font-weight: 700;
+    background-color: ${randomRGB};
+    border-radius: 50%;
+  }
+
+  .avatar_container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .avatar_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 export default ContactInfoStyled;

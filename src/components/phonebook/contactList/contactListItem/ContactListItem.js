@@ -42,12 +42,21 @@ const ContactListItem = ({
   return (
     <ListItem>
       <div className="listItem_meta" id={contact.id} onClick={openContactInfo}>
-        <h3 className="listItem_name">{contact.name} </h3>
-
-        <p className="listItem_number">{contact.number}</p>
-        {contact.category && (
-          <p className="listItem_category">{contact.category}</p>
+        {contact.avatar ? (
+          <div className="avatar_container">
+            <img className="avatar_img" src={contact.avatar} alt="avatar" />
+          </div>
+        ) : (
+          <span className="avatar_span">{contact.name[0].toUpperCase()}</span>
         )}
+        <div className="listItem_meta-info">
+          <h3 className="listItem_name">{contact.name} </h3>
+
+          <p className="listItem_number">{contact.number}</p>
+          {contact.category && (
+            <p className="listItem_category">{contact.category}</p>
+          )}
+        </div>
       </div>
 
       <div>

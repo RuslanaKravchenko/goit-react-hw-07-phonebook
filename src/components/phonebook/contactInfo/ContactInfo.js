@@ -3,11 +3,23 @@ import PropTypes from 'prop-types';
 import ContactInfoStyled from './ContactInfoStyled';
 
 const ContactInfo = ({ contactById }) => {
-  const { name, number, email, category, dateOfBirth } = contactById;
+  const { name, number, email, category, dateOfBirth, avatar } = contactById;
   return (
     <ContactInfoStyled>
-      <h2 className="info_name">{name}</h2>
-      {category && <p className="info_category">{category}</p>}
+      <div className="info_header-container">
+        <div>
+          <h2 className="info_name">{name}</h2>
+          {category && <p className="info_category">{category}</p>}
+        </div>
+
+        {avatar ? (
+          <div className="avatar_container">
+            <img className="avatar_img" src={avatar} alt="avatar" />
+          </div>
+        ) : (
+          <span className="avatar_span">{name[0].toUpperCase()} </span>
+        )}
+      </div>
 
       <ul className="list info_list">
         <li className="info_item">
