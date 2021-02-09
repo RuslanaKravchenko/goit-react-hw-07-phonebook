@@ -35,12 +35,34 @@ const filterReducer = createReducer('', {
 
 const errorReducer = createReducer(null, {
   [contactsActions.addNewContactError]: (_, action) => action.payload,
+  [contactsActions.addNewContacRequest]: () => null,
+
   [contactsActions.getContactsError]: (_, action) => action.payload,
+  [contactsActions.getContactsRequest]: () => null,
+
   [contactsActions.deleteContactError]: (_, action) => action.payload,
+  [contactsActions.deleteContactRequest]: () => null,
+
+  [contactsActions.editContactError]: (_, action) => action.payload,
+  [contactsActions.editContactRequest]: () => null,
 });
 
 const loadingReducer = createReducer(false, {
-  [contactsActions.setLoading]: state => !state,
+  [contactsActions.getContactsRequest]: () => true,
+  [contactsActions.getContactsSuccess]: () => false,
+  [contactsActions.getContactsError]: () => false,
+
+  [contactsActions.addNewContactRequest]: () => true,
+  [contactsActions.addNewContactSuccess]: () => false,
+  [contactsActions.addNewContactError]: () => false,
+
+  [contactsActions.deleteContactRequest]: () => true,
+  [contactsActions.deleteContactSuccess]: () => false,
+  [contactsActions.deleteContactError]: () => false,
+
+  [contactsActions.editContactRequest]: () => true,
+  [contactsActions.editContactSuccess]: () => false,
+  [contactsActions.editContactError]: () => false,
 });
 
 export default combineReducers({
